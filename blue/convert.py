@@ -697,10 +697,11 @@ while True:
         set_roi()
         while True:
             image = cv2.cvtColor(np.array(ImageGrab.grab(bbox=(x1, y1, x2, y2))), cv2.COLOR_BGR2RGB)
-            key = cv2.waitKey(100)
-            if key == ord("q"):
-                print("Quit")
-                break
+            #key = cv2.waitKey(100)
+            #if key == ord("q"):
+            #    print("Quit")
+            #    break
+            break
         cv2.imwrite('./img/'+str(file)+'.png', image)
 
 
