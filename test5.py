@@ -1,30 +1,34 @@
 # 그리기 + 지우기 + 포인터 + 밑줄 + 터틀 그래픽 화면 크기에 맞게 조절
 # pdf -> png
 # 이미지 크기 줄이고 터틀 그래픽 배경 설정
+# 그림 그린것 저장
 
 import cv2 as cv
 import turtle as t
 import os
 from PIL import Image
-
 # 이미지로 저장, 사이즈 조절
-file_list = os.listdir("src/file_location/")
+cnt=0
+file_list = os.listdir("blue/source/")
 from pdf2image import convert_from_path
 for file_name in file_list:
-    pages = convert_from_path("src/file_location/" + file_name)
+    pages = convert_from_path("./source/" + file_name)
     for i, page in enumerate(pages):
-        page.save("src/img/"+str(i)+'.png', "PNG")
-        img = Image.open('src/img/'+str(i)+'.png')
+        page.save("./img/"+str(i)+'.png', "PNG")
+        img = Image.open('./img/'+str(i)+'.png')
         img_r = img.resize((int(img.size[0]*0.55), int(img.size[1]*0.55)))
-        img_r.save('src/img/'+str(i)+'.png')
+        img_r.save('./img/'+str(i)+'.png')
+        cnt += 1
 
 # 터틀 그래픽 사이즈 조절
-image1 = Image.open('src/img/0.png')
+image1 = Image.open('./img/0.png')
 wt = image1.size[0]  # 터틀 그래픽 가로
 ht = image1.size[1]  # 터틀 그래픽 세로
 win = t.Screen()
+screen = t.Screen()
 win.setup(wt, ht)
-win.bgpic("src/img/0.png")
+screen.setup(wt, ht)
+win.bgpic("./img/0.png")
 
 
 def draw_ball_location(img_color, locations):
@@ -37,6 +41,25 @@ def draw_ball_location(img_color, locations):
 
     return img_color
 
+
+from PIL import ImageGrab
+import cv2
+import keyboard
+import mouse
+import numpy as np
+
+def set_roi():
+    global ROI_SET, x1, y1, x2, y2
+    ROI_SET = False
+    print("Select your ROI using mouse drag.")
+    while (mouse.is_pressed() == False):
+        x1, y1 = mouse.get_position()
+        while (mouse.is_pressed() == True):
+            x2, y2 = mouse.get_position()
+            while (mouse.is_pressed() == False):
+                print("Your ROI : {0}, {1}, {2}, {3}".format(x1, y1, x2, y2))
+                ROI_SET = True
+                return
 
 cap = cv.VideoCapture(0)
 
@@ -84,7 +107,7 @@ while True:
     img_hsv = cv.cvtColor(img_color, cv.COLOR_BGR2HSV)
 
     hue_red = 5
-    lower_red = (hue_red - 5, 100, 180)
+    lower_red = (hue_red - 5, 95, 165)
     upper_red = (hue_red + 5, 255, 255)
     img_mask = cv.inRange(img_hsv, lower_red, upper_red)
 
@@ -168,8 +191,10 @@ while True:
             s = 0
 
     elif key == 110: # n 입력 -> 다음 페이지
-        file+=1
-        t= "src/img/"+str(file)+'.png'
+        pointer.ht()
+        pointer.st()
+        file += 1
+        t= "./img/"+str(file)+'.png'
         if os.path.isfile(t):
             win.bgpic(t)
             t1.clear()
@@ -179,8 +204,10 @@ while True:
             print("없다")
             break
     elif key == 98:  # b 입력 -> 이전 페이지
+        pointer.ht()
+        pointer.st()
         file -= 1
-        t = "src/img/"+str(file)+'.png'
+        t = "./img/"+str(file)+'.png'
         if os.path.isfile(t):
             win.bgpic(t)
             t1.clear()
@@ -189,20 +216,39 @@ while True:
         else:
             print("없다")
             break
+    elif key==ord("k"):
+        ROI_SET = False
+        x1, y1, x2, y2 = 0, 0, 0, 0
+        set_roi()
+        while True:
+            image = cv2.cvtColor(np.array(ImageGrab.grab(bbox=(x1, y1, x2, y2))), cv2.COLOR_BGR2RGB)
+            key = cv2.waitKey(100)
+            if key == ord("q"):
+                print("Quit")
+                break
+        cv2.imwrite('./img/'+str(file)+'.png', image)
 
 
-path=input("Path of image files: ")
-ConvertedtoPdfPath=input("path of pdf: ")
-file_list=os.listdir(path)
-img_list=[]
-k=0
-for i in file_list:
+for i in range(0, cnt):
+    del_file_name='./'+str(i)+'.eps'
+    if os.path.isfile(del_file_name):
+        os.remove(del_file_name)
+
+path = input("Path of image files: ")
+ConvertedtoPdfPath = input("path of pdf: ")
+file_list = os.listdir(path)
+img_list = []
+k = 0
+for i in range(0, cnt):
     print(i)
-    print("진행상황: "+str(k)+'/'+str(len(file_list)))
-    img=Image.open(path+"\\"+str(i))
-    img_1=img.convert('RGB')
-    img_list.append(img_1)
+    print("진행상황: "+str(k)+'/'+str(cnt))
+    img = Image.open(path+'\\'+str(k)+'.png')
+    img_1 = img.convert('RGB')
+    if k != 0:
+        img_list.append(img)
     k += 1
-img_1.save(ConvertedtoPdfPath+'\\ConvertedToPdf.pdf',save_all=True,append_images=img_list)
+img1 = Image.open('./img/0.png')
+img1.save(ConvertedtoPdfPath+'\\ConvertedToPdf.pdf',save_all=True,append_images=img_list)
 print("완료")
+
 win.mainloop()
