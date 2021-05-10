@@ -9,7 +9,7 @@ import os
 from PIL import Image
 # 이미지로 저장, 사이즈 조절
 cnt=0
-file_list = os.listdir("source/")
+file_list = os.listdir("./source/")
 from pdf2image import convert_from_path
 for file_name in file_list:
     pages = convert_from_path("./source/" + file_name)
@@ -21,7 +21,7 @@ for file_name in file_list:
         cnt += 1
 
 # 터틀 그래픽 사이즈 조절
-image1 = Image.open('img/0.png')
+image1 = Image.open('./img/0.png')
 wt = image1.size[0]  # 터틀 그래픽 가로
 ht = image1.size[1]  # 터틀 그래픽 세로
 win = t.Screen()
@@ -248,7 +248,7 @@ for i in range(0, cnt):
     if k != 0:
         img_list.append(img)
     k += 1
-img1 = Image.open('img/0.png')
+img1 = Image.open('./img/0.png')
 img1.save(ConvertedtoPdfPath+'\\ConvertedToPdf.pdf',save_all=True,append_images=img_list)
 print("완료")
 
