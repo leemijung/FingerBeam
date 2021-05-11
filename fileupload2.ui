@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>imgs/fb.png</normaloff>imgs/fb.png</iconset>
+    <normaloff>img/fb.png</normaloff>img/fb.png</iconset>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
