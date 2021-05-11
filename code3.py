@@ -55,11 +55,8 @@ form_1, base_1 = uic.loadUiType(opening_)
 file_upload_ = 'fileupload2.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 
-loading_ = 'loading1.ui'
-form_3, base_3 = uic.loadUiType(loading_)
-
 note_ = 'takingnote2.ui'
-form_4, base_4 = uic.loadUiType(note_)
+form_3, base_3 = uic.loadUiType(note_)
 
 
 class convert_file():
