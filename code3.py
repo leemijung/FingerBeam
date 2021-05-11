@@ -41,7 +41,6 @@ def clear():
     pointer.clear()
 
 
-
 global file
 file = 0
 global cnt
@@ -129,20 +128,12 @@ class upload_page(base_2, form_2):
         filename = QtWidgets.QFileDialog.getOpenFileName(self, 'Open File')
         global path_name
         path_name = filename[0]
-        self.main = loading_page()
-        self.main.show()
-        self.close()
-
-
-class loading_page(base_3, form_3):
-    def __init__(self):
-        super(base_3, self).__init__()
-        self.setupUi(self)
-
-    def close_page(self):
         self.main = note_page()
         self.main.show()
         self.close()
+        cv=convert_file()
+        cv.pdf_to_png()
+
 
 
 class note_page(base_4, form_4):
@@ -279,7 +270,6 @@ while True:
     key = cv.waitKey(1) & 0xFF
     if key == 32:  # space bar 누르면 모두 지우기
         clear()
-
 
 
 
