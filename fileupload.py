@@ -10,7 +10,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
-fileupload_ui = r'C:\Users\zaqxs\PycharmProjects\FingerBeam\fileupload.ui'
+fileupload_ui = r'fileupload.ui'
 
 class MainDialog(QDialog):
     def __init__(self):
