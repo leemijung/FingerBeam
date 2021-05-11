@@ -52,7 +52,7 @@ path_name = None
 opening_ = 'opening.ui'
 form_1, base_1 = uic.loadUiType(opening_)
 
-file_upload_ = '../project/src/fileupload2.ui'
+file_upload_ = 'fileupload2.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 
 note_ = 'takingnote2.ui'
@@ -133,9 +133,9 @@ class upload_page(base_2, form_2):
 
 
 
-class note_page(base_4, form_4):
+class note_page(base_3, form_3):
     def __init__(self):
-        super(base_4, self).__init__()
+        super(base_3, self).__init__()
         self.setupUi(self)
         self.pushButton_3.clicked.connect(self.home)
         self.pushButton_2.clicked.connect(self.prev)
@@ -178,7 +178,7 @@ if __name__ == '__main__':
     app.exec_()
 
 
-image1 = Image.open('../project/src/img/0.png')
+image1 = Image.open('/img/0.png')
 wt = image1.size[0]
 ht = image1.size[1]
 

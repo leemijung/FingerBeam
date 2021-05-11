@@ -55,11 +55,8 @@ form_1, base_1 = uic.loadUiType(opening_)
 file_upload_ = 'fileupload2.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 
-loading_ = 'loading1.ui'
-form_3, base_3 = uic.loadUiType(loading_)
-
 note_ = 'takingnote2.ui'
-form_4, base_4 = uic.loadUiType(note_)
+form_3, base_3 = uic.loadUiType(note_)
 
 
 class convert_file():
@@ -136,9 +133,9 @@ class upload_page(base_2, form_2):
 
 
 
-class note_page(base_4, form_4):
+class note_page(base_3, form_3):
     def __init__(self):
-        super(base_4, self).__init__()
+        super(base_3, self).__init__()
         self.setupUi(self)
         self.pushButton_3.clicked.connect(self.home)
         self.pushButton_2.clicked.connect(self.prev)

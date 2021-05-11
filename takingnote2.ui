@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>imgs/fb.png</normaloff>imgs/fb.png</iconset>
+    <normaloff>img/fb.png</normaloff>img/fb.png</iconset>
   </property>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
