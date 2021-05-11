@@ -64,7 +64,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.start_btn.setText(_translate("MainWindow", "시작"))
         self.exit_btn.setText(_translate("MainWindow", "종료"))
-        self.label.setText(_translate("MainWindow", "반갑습니다.\n""\n""\n"
+        self.label.setText(_translate("MainWindow", "반갑습니다.\n"
 "핑거빔입니다.\n"
 "핑거빔 은 일반적인 필기시스템과 달리,\n"
 "전자펜슬 없이 공중에서 필기할 수 있는 \n"

@@ -6,37 +6,28 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+from PyQt5.QtWidgets import *
+from PyQt5 import uic
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(798, 600)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("blue/img/fb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        Dialog.setWindowIcon(icon)
-        self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(310, 350, 201, 31))
-        self.pushButton.setObjectName("pushButton")
-        self.textEdit = QtWidgets.QTextEdit(Dialog)
-        self.textEdit.setGeometry(QtCore.QRect(80, 230, 651, 81))
-        self.textEdit.setObjectName("textEdit")
+fileupload_ui = r'C:\Users\zaqxs\PycharmProjects\FingerBeam\fileupload.ui'
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+class MainDialog(QDialog):
+    def __init__(self):
+        QDialog.__init__(self, None)
+        uic.loadUi(fileupload_ui, self)
 
-    def retranslateUi(self, Dialog):
-        _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.pushButton.setText(_translate("Dialog", "파일 업로드"))
+        self.pushButton.clicked.connect(self.Button_click)
 
+    def Button_click(self):
+        file_names = QFileDialog.getOpenFileNames(self)
+
+        for file in file_names[0]:
+            exist = self.textEdit.toPlainText()
+            self.textEdit.setText(exist + file + '\n')
 
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
+    app = QApplication(sys.argv)
+    Dialog = MainDialog()
     Dialog.show()
-    sys.exit(app.exec_())
-
+    app.exec_()
