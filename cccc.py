@@ -84,7 +84,7 @@ class convert_file():
 
     def png_to_pdf(self):
         global cnt
-        pdf_path = '../source/'
+        pdf_path = './convertedPDF/'
         img_list = []
         k = 0
         for i in range(0, cnt):
