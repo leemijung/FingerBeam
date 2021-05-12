@@ -167,7 +167,7 @@ class note_page(base_3, form_3):
         if self.pushButton.isChecked():
             self.pushButton.setStyleSheet("background-color : #ff557f")
             self.pushButton.setText("필기 중단")
-            self.change()
+            #self.change()
         else:
             self.pushButton.styleSheet("background-color : lightblue")
 
