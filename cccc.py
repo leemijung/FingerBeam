@@ -145,9 +145,22 @@ class note_page(base_3, form_3):
         self.setupUi(self)
         self.pushButton_3.clicked.connect(self.home)
         self.pushButton_2.clicked.connect(self.prev)
-        self.pushButton.clicked.connect(self.draw)
+        #self.pushButton.clicked.connect(self.draw)
+        self.pushButton.clicked.connect(self.changeColor)
+        self.pushButton.setCheckable(True)
+        self.pushButton.setStyleSheet("background-color : lightblue")
+        self.update()
+        self.show()
         self.pushButton_4.clicked.connect(self.next)
         self.pushButton_5.clicked.connect(self.end)
+        #self.label.setText("※ v : 누르면서 필기하세요 ")
+
+    def changeColor(self):
+        if self.pushButton.isChecked():
+            self.pushButton.setStyleSheet("background-color : #ff557f")
+            self.pushButton.setText("필기 중단")
+        else:
+            self.pushButton.styleSheet("background-color : lightblue")
 
     def home(self):
         global file
@@ -177,6 +190,7 @@ class note_page(base_3, form_3):
         global file, cnt
         file = cnt
         print(file)
+
 
 
 if __name__ == '__main__':

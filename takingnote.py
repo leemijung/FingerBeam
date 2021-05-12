@@ -24,7 +24,7 @@ class Ui_Dialog(object):
         font.setWeight(75)
         self.label_2.setFont(font)
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("../../OneDrive/바탕 화면/e.PNG"))
+        self.label_2.setPixmap(QtGui.QPixmap("./img/fb.PNG"))
         self.label_2.setObjectName("label_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Dialog)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(10, 520, 771, 51))
@@ -62,6 +62,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
+
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
