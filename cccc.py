@@ -139,7 +139,6 @@ class upload_page(base_2, form_2):
         cv.pdf_to_png()
 
 
-
 class note_page(base_3, form_3):
     def __init__(self):
         super(base_3, self).__init__()
