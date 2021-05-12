@@ -111,11 +111,11 @@ class take_note():
         note_page.win.bgpic(t)
         note_page.win.update()
 
-    def clear(self):
-        note_page.list_ball_location.clear()
-        note_page.history_ball_locations.clear()
-        note_page.t1.clear()
-        note_page.pointer.clear()
+    # def clear(self):
+    #     note_page.list_ball_location.clear()
+    #     note_page.history_ball_locations.clear()
+    #     note_page.t1.clear()
+    #     note_page.pointer.clear()
 
 
 class opening_page(base_1, form_1):
@@ -158,7 +158,7 @@ class note_page(base_3, form_3):
         self.pushButton_3.clicked.connect(self.home)
         self.pushButton_2.clicked.connect(self.prev)
         # self.pushButton.clicked.connect(self.change)
-        # self.pushButton.clicked.connect(self.changeColor)
+        self.pushButton.clicked.connect(self.changeColor)
         self.pushButton.clicked.connect(self.start)
         self.pushButton.setCheckable(True)
         self.pushButton.setStyleSheet("background-color : lightblue")
@@ -167,6 +167,8 @@ class note_page(base_3, form_3):
         self.pushButton_4.clicked.connect(self.next)
         self.pushButton_5.clicked.connect(self.end)
         # self.label.setText("※ v : 누르면서 필기하세요 ")
+
+
 
     def runa(self):
 
@@ -180,11 +182,13 @@ class note_page(base_3, form_3):
         win.setup(wt, ht)
         screen.setup(wt, ht)
         win.bgpic("./img/0.png")
+        list_ball_location = []
+        history_ball_locations = []
+
 
         cap = cv.VideoCapture(0)
 
-        list_ball_location = []
-        history_ball_locations = []
+
         isDraw = True
 
         t1 = t.Turtle()
@@ -205,11 +209,11 @@ class note_page(base_3, form_3):
         t1.speed(0)
         pointer.speed(0)
 
-        # global x
-        # global y
-        # global s
-        # global end
-        # global file
+        global x
+        global y
+        global s
+        global end
+        global file
         x = y = s = end = file = 0
         win.update()
 
@@ -262,7 +266,11 @@ class note_page(base_3, form_3):
 
             key = cv.waitKey(1) & 0xFF
             if key == 32:  # space bar 누르면 모두 지우기
-                t_n.clear()
+                #t_n.clear()
+                list_ball_location.clear()
+                history_ball_locations.clear()
+                t1.clear()
+                pointer.clear()
             elif key == ord('v'):  # v 누르면 필기 시작 / 필기 중지
                 isDraw = not isDraw
 
@@ -292,12 +300,19 @@ class note_page(base_3, form_3):
         global file
         if file >= 1:
             file -= 1
+
+        take_note.move_page(file)
+        # t = "./img/" + str(index) + '.png'
+        # self.clear()
+        # note_page.win.bgpic(t)
+        # note_page.win.update()
         print(file)
 
     def next(self):
         global file, cnt
         if file <= cnt - 1:
             file += 1
+        take_note.move_page(file)
         print(file)
 
     def end(self):
