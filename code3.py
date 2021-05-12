@@ -52,7 +52,7 @@ path_name = None
 opening_ = 'opening.ui'
 form_1, base_1 = uic.loadUiType(opening_)
 
-file_upload_ = 'fileupload2.ui'
+file_upload_ = 'fileupload.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 
 note_ = 'takingnote2.ui'
@@ -67,10 +67,10 @@ class convert_file():
         global cnt, path_name
         pages = convert_from_path(path_name)
         for i, page in enumerate(pages):
-            page.save("./img/" + str(i) + '.png', "PNG")
-            img = Image.open('./img/' + str(i) + '.png')
+            page.save("blue/img/" + str(i) + '.png', "PNG")
+            img = Image.open('blue/img/' + str(i) + '.png')
             img_r = img.resize((int(img.size[0] * 0.55), int(img.size[1] * 0.55)))
-            img_r.save('./img/' + str(i) + '.png')
+            img_r.save('blue/img/' + str(i) + '.png')
             cnt += 1
         cnt -= 1
         print("done")
@@ -84,7 +84,7 @@ class convert_file():
 
     def png_to_pdf(self):
         global cnt
-        pdf_path = './source/'
+        pdf_path = '.blue/source/'
         img_list = []
         k = 0
         for i in range(0, cnt):
@@ -93,7 +93,7 @@ class convert_file():
             if k != 0:
                 img_list.append(img_1)
             k += 1
-        img1 = Image.open('./img/0.eps')
+        img1 = Image.open('.blue/img/0.eps')
         img1.save(pdf_path + '\\ConvertedToPdf.pdf', save_all=True, append_images=img_list)
         print("완료")
         self.del_eps()
@@ -128,8 +128,8 @@ class upload_page(base_2, form_2):
         self.main = note_page()
         self.main.show()
         self.close()
-        cv=convert_file()
-        cv.pdf_to_png()
+        #cv=convert_file()
+        #cv.pdf_to_png()
 
 
 
