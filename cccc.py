@@ -52,7 +52,7 @@ path_name = None
 opening_ = 'opening.ui'
 form_1, base_1 = uic.loadUiType(opening_)
 
-file_upload_ = 'fileupload2.ui'
+file_upload_ = 'fileupload.ui'
 form_2, base_2 = uic.loadUiType(file_upload_)
 
 note_ = 'takingnote2.ui'
@@ -84,7 +84,7 @@ class convert_file():
 
     def png_to_pdf(self):
         global cnt
-        pdf_path = '../project/src/source/'
+        pdf_path = '../source/'
         img_list = []
         k = 0
         for i in range(0, cnt):

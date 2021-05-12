@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>blue/img/fb.png</normaloff>blue/img/fb.png</iconset>
+    <normaloff>img/fb.png</normaloff>img/fb.png</iconset>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -98,7 +98,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>blue/img/logo.png</pixmap>
+     <pixmap>img/logo.png</pixmap>
     </property>
    </widget>
   </widget>

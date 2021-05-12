@@ -14,7 +14,7 @@ class Ui_Dialog(object):
         Dialog.resize(800, 603)
         Dialog.setMinimumSize(QtCore.QSize(795, 0))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("blue/img/fb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("img/fb.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Dialog.setWindowIcon(icon)
         self.label_2 = QtWidgets.QLabel(Dialog)
         self.label_2.setGeometry(QtCore.QRect(10, 30, 771, 471))
