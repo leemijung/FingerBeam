@@ -77,8 +77,15 @@ class convert_file():
 
     def del_eps(self):
         global cnt
-        for index in range(0, cnt):
+        for index in range(0, cnt+1):
             del_file_name = './' + str(index) + '.eps'
+            if os.path.isfile(del_file_name):
+                os.remove(del_file_name)
+
+    def del_png(self):
+        global cnt
+        for index in range(0, cnt+1):
+            del_file_name = './img/' + str(index) + '.png'
             if os.path.isfile(del_file_name):
                 os.remove(del_file_name)
 
@@ -147,6 +154,9 @@ class note_page(base_3, form_3):
         global file
         file = 0
         print(file)
+        # png파일 삭제
+        #cv1=convert_file()
+        #cv1.del_png()
 
     def prev(self):
         global file
