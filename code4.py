@@ -95,27 +95,13 @@ class take_note():
 
         return img_color
 
-    def save_pen(self, name):
-        note_page.pointer.ht()
-        note_page.screen.tracer(False)
-        canvas = note_page.screen.getcanvas()
-        canvas.postscript(file=name + '.eps', width=note_page.wt, height=note_page.ht)
-        img = Image.open(name + '.eps')
-        img.save('./img/' + name + '_.png')
-        note_page.screen.tracer(True)
-        note_page.pointer.st()
 
-    def move_page(self, index):
-        t = "./img/" + str(index) + '.png'
-        self.clear()
-        note_page.win.bgpic(t)
-        note_page.win.update()
 
-    # def clear(self):
-    #     note_page.list_ball_location.clear()
-    #     note_page.history_ball_locations.clear()
-    #     note_page.t1.clear()
-    #     note_page.pointer.clear()
+    def clear(self):
+        note_page.list_ball_location.clear()
+        note_page.history_ball_locations.clear()
+        note_page.t1.clear()
+        note_page.pointer.clear()
 
 
 class opening_page(base_1, form_1):
@@ -155,19 +141,29 @@ class note_page(base_3, form_3):
     def __init__(self):
         super(base_3, self).__init__()
         self.setupUi(self)
-        self.pushButton_3.clicked.connect(self.home)
-        self.pushButton_2.clicked.connect(self.prev)
-        # self.pushButton.clicked.connect(self.change)
+        #self.pushButton_3.clicked.connect(self.home)
+        #self.pushButton_2.clicked.connect(self.prev)
+        #self.pushButton.clicked.connect(self.change)
         self.pushButton.clicked.connect(self.changeColor)
         self.pushButton.clicked.connect(self.start)
         self.pushButton.setCheckable(True)
         self.pushButton.setStyleSheet("background-color : lightblue")
         self.update()
         self.show()
-        self.pushButton_4.clicked.connect(self.next)
-        self.pushButton_5.clicked.connect(self.end)
+        #self.pushButton_4.clicked.connect(self.next)
+        #self.pushButton_5.clicked.connect(self.end)
         # self.label.setText("※ v : 누르면서 필기하세요 ")
 
+
+    def save_pen(self, name):
+        note_page.pointer.ht()
+        note_page.screen.tracer(False)
+        canvas = note_page.screen.getcanvas()
+        canvas.postscript(file=name + '.eps', width=note_page.wt, height=note_page.ht)
+        img = Image.open(name + '.eps')
+        img.save('./img/' + name + '_.png')
+        note_page.screen.tracer(True)
+        note_page.pointer.st()
 
 
     def runa(self):
@@ -214,7 +210,18 @@ class note_page(base_3, form_3):
         global s
         global end
         global file
+        global check
+        global check2
+        global check3
+        global check4
+        global  cnt
+
+
         x = y = s = end = file = 0
+        check=False
+        check2=False
+        check3=False
+        check4=False
         win.update()
 
         while True:
@@ -273,12 +280,61 @@ class note_page(base_3, form_3):
                 pointer.clear()
             elif key == ord('v'):  # v 누르면 필기 시작 / 필기 중지
                 isDraw = not isDraw
-
-
-
+            self.pushButton_4.clicked.connect(self.checking)
+            self.pushButton_2.clicked.connect(self.checking2)
+            self.pushButton_3.clicked.connect(self.checking3)
+            self.pushButton_5.clicked.connect(self.checking4)
+            if check==True:
+                if file > cnt:
+                    file -= 1
+                file+=1
+                a = "./img/" + str(file) + '.png'
+                win.clear()
+                win.bgpic(a)
+                win.update()
+                check=False
+                print(file)
+            if check2==True:
+                if file < 0:
+                    file += 1
+                file-=1
+                a = "./img/" + str(file) + '.png'
+                win.clear()
+                win.bgpic(a)
+                win.update()
+                check2=False
+                print(file)
+            if check3==True:
+                file=0
+                a = "./img/" + str(file) + '.png'
+                win.clear()
+                win.bgpic(a)
+                win.update()
+                check3 = False
+                print(file)
+            if check4==True:
+                file=cnt
+                a = "./img/" + str(file) + '.png'
+                win.clear()
+                win.bgpic(a)
+                win.update()
+                check4 = False
+                print(file)
+    def checking(self):
+        global check
+        check=True
+    def checking2(self):
+        global check2
+        check2=True
+    def checking3(self):
+        global check3
+        check3=True
+    def checking4(self):
+        global check4
+        check4=True
     def start(self):
-        global running
-        running = True
+        # global running
+        # running = True
         th = threading.Thread(target=self.runa)
         th.start()
         print("started..")
@@ -296,24 +352,27 @@ class note_page(base_3, form_3):
         file = 0
         print(file)
 
-    def prev(self):
+    '''def prev(self):
         global file
         if file >= 1:
             file -= 1
+        t = "./img/" + str(file) + '.png'
+        self.clear()
+        note_page.win.bgpic(t)
+        note_page.win.update()
+        print(file)'''
 
-        take_note.move_page(file)
-        # t = "./img/" + str(index) + '.png'
-        # self.clear()
-        # note_page.win.bgpic(t)
-        # note_page.win.update()
-        print(file)
-
-    def next(self):
+    '''def next(self):
         global file, cnt
         if file <= cnt - 1:
             file += 1
-        take_note.move_page(file)
-        print(file)
+        t = "./img/" + str(file) + '.png'
+        self.clear()
+        note_page.win.bgpic(t)
+        note_page.win.update()
+        print(file)'''
+
+
 
     def end(self):
         global file, cnt
@@ -353,11 +412,6 @@ if __name__ == '__main__':
     op.show()
     # sys.exit(app.exec_())
     app.exec_()
-
-
-
-
-
 
 
 note_page.cap.release()
