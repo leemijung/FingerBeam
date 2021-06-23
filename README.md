@@ -61,7 +61,7 @@ import cv2
 
 핑거빔 소개 & 시작 버튼을 눌러 업로드 화면으로 넘어감
 
----
+![1](https://user-images.githubusercontent.com/76740863/123056193-9e603500-d441-11eb-8438-586434d218bc.jpg)
 
 <br>
 
@@ -69,7 +69,7 @@ import cv2
 
 내 pc에서 필기하고자 하는 문서 업로드 & pdf 형식으로 변환 진행
 
----
+![2](https://user-images.githubusercontent.com/76740863/123056201-9f916200-d441-11eb-9fee-e3e374bad417.jpg)
 
 <br>
 
@@ -77,7 +77,7 @@ import cv2
 
 필기시작 버튼을 눌러 필기 진행화면으로 넘어감
 
----
+![3](https://user-images.githubusercontent.com/76740863/123056202-9f916200-d441-11eb-9ff0-312faa09925c.jpg)
 
 <br>
 
@@ -85,7 +85,7 @@ import cv2
 
 문서의 페이지가 나타나고, 필기를 진행 & 'space bar' 필기 전체 삭제 & 'v' 필기 on/off
 
----
+![4](https://user-images.githubusercontent.com/76740863/123056203-a029f880-d441-11eb-8d78-68e165a00213.jpg)
 
 <br>
 
@@ -93,5 +93,12 @@ import cv2
 
 '예' 버튼을 눌러 내 pc로 문서 다운로드 가능
 
----
+![5](https://user-images.githubusercontent.com/76740863/123056208-a15b2580-d441-11eb-8e6e-61004abe624b.jpg)
+
+<br>
+
+- 결과 pdf 도출화면
+
+
+
 
