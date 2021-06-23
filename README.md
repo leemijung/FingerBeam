@@ -99,6 +99,6 @@ import cv2
 
 - 결과 pdf 도출화면
 
-
+![6](https://user-images.githubusercontent.com/76740863/123056789-3827e200-d442-11eb-924d-cbc3dd1ed545.jpg)
 
 
