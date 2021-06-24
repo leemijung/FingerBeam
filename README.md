@@ -11,8 +11,8 @@
 | :---------------------------------------------------------: | :----------------------------: | :-------------------------------------------------------: |
 |   [leemijung(이미정)](https://github.com/leemijung)     |       Team Leader 👑        |                전체적인 프로젝트 관리 담당                |
 |   [youngseo0526(김영서)](https://github.com/youngseo0526)   |        Front-end Coder         |               Client Side 기능 구현 및 관리               |
-|   [An-Byeong-Seon(안병선)](https://github.com/mok010)   |        Back-end Coder         |               Server Side 기능 구현 및 관리               |
-|   [201910835(정은혜)](https://github.com/leemijung)   |        Front-end Coder         |            Client Side 기능 구현 및 관리                  |
+|   [An-Byeong-Seon(안병선)](https://github.com/An-Byeong-Seon)   |        Back-end Coder         |               Server Side 기능 구현 및 관리               |
+|   [201910835(정은혜)](https://github.com/201910835)   |        Front-end Coder         |            Client Side 기능 구현 및 관리                  |
 |   [00ssum(조수민)](https://github.com/00ssum)   |        Back-end Coder         |              Server Side 기능 구현 및 관리                |
 
 -------------------
