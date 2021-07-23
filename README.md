@@ -1,6 +1,8 @@
 # FingerBeam
 **2021_SangsaengProject**
 
+![result_img](https://user-images.githubusercontent.com/76740863/126743176-06740522-57ee-4919-83f1-117dac18cf54.GIF)
+
 ### FingerBeam팀 (2021.03.23 ~ 2021.05.30)
 
 공중에서 필기, 저장 기능을 제공하는 시스템
